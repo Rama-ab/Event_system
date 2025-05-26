@@ -26,8 +26,8 @@ class UpdateEventRequest extends FormRequest
             'description' => ['nullable', 'string'],
             'event_type_id' => ['sometimes', 'exists:event_types,id'],
             'location_id' => ['sometimes', 'exists:locations,id'],
-            'start_date' => ['sometimes', 'date'],
-            'end_date' => ['sometimes', 'date', 'after_or_equal:start_date'],
+            'start_time' => ['sometimes', 'date'],
+            'end_time' => ['sometimes', 'date', 'after_or_equal:start_time'],
         ];
     }
 }

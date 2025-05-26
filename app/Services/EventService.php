@@ -12,14 +12,11 @@ class EventService
         return Event::with(['eventType', 'location', 'user', 'images'])->latest()->get();
     }
 
-    public function create(array $data): Reservation
-    {
-        return Reservation::create([
-            'user_id' => auth()->id(),
-            'event_id' => $data['event_id'],
-            'seats' => $data['seats'],
-        ]);
-    }
+    public function create(array $data)
+{
+    $data['user_id'] = auth()->id(); 
+    return Event::create($data);
+}
 
     public function update(Event $event, array $data)
     {

@@ -48,11 +48,18 @@ class EventController extends Controller
         return new EventResource($event->load(['eventType', 'location', 'user', 'images']));
     }
 
+    // public function update(UpdateEventRequest $request, Event $event)
+    // {
+    //     $updatedEvent = $this->eventService->updateEvent($event, $request->validated());
+    //     return new EventResource($updatedEvent->load('mainImage'));
+    // }
+
     public function update(UpdateEventRequest $request, Event $event)
-    {
-        $updatedEvent = $this->eventService->update($event, $request->validated());
-        return new EventResource($updatedEvent->load('mainImage'));
-    }
+{
+    \Log::info($request->validated());  // لتتأكد ما هي البيانات التي تم التحقق منها فعليًا
+    $updatedEvent = $this->eventService->updateEvent($event, $request->validated());
+    return new EventResource($updatedEvent->load('mainImage'));
+}
 
     public function destroy(Event $event)
     {

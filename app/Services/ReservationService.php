@@ -14,11 +14,11 @@ class ReservationService
 
     public function create(array $data): Reservation
     {
-        $reservation = Reservation::create([
+        return Reservation::create([
             'user_id' => auth()->id(),
+            'event_id' => $data['event_id'],
+            'seats' => $data['seats'],
         ]);
-
-        return $reservation->load('event');
     }
 
     public function update(Reservation $reservation, array $data): Reservation
